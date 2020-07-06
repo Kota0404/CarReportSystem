@@ -54,6 +54,7 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.openImag = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -140,6 +141,7 @@
             this.bthiraku.TabIndex = 7;
             this.bthiraku.Text = "開く";
             this.bthiraku.UseVisualStyleBackColor = true;
+            this.bthiraku.Click += new System.EventHandler(this.bthiraku_Click);
             // 
             // btsakuzyo
             // 
@@ -149,6 +151,7 @@
             this.btsakuzyo.TabIndex = 8;
             this.btsakuzyo.Text = "削除";
             this.btsakuzyo.UseVisualStyleBackColor = true;
+            this.btsakuzyo.Click += new System.EventHandler(this.btsakuzyo_Click);
             // 
             // label6
             // 
@@ -178,6 +181,7 @@
             this.btsyuusei.TabIndex = 10;
             this.btsyuusei.Text = "修正";
             this.btsyuusei.UseVisualStyleBackColor = true;
+            this.btsyuusei.Click += new System.EventHandler(this.btsyuusei_Click);
             // 
             // btclr
             // 
@@ -187,6 +191,7 @@
             this.btclr.TabIndex = 11;
             this.btclr.Text = "削除";
             this.btclr.UseVisualStyleBackColor = true;
+            this.btclr.Click += new System.EventHandler(this.btclr_Click);
             // 
             // button1
             // 
@@ -331,6 +336,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // openImag
+            // 
+            this.openImag.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -399,6 +408,7 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.OpenFileDialog openImag;
     }
 }
 
