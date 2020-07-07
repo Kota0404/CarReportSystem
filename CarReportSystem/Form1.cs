@@ -14,10 +14,16 @@ using System.Windows.Forms;
 namespace CarReportSystem {
     public partial class Form1 : Form {
         BindingList<CarReport> cars = new BindingList<CarReport>();
+        
+
         public Form1()
         {
             InitializeComponent();
             dgvCarDate.DataSource = cars;
+            btsakuzyo.Enabled = false;
+            btsyuusei.Enabled = false;
+            btclr.Enabled = false;
+            btsave.Enabled = false;
         }
         //追加ボタン
         private void bttuika_Click(object sender, EventArgs e)
@@ -26,7 +32,7 @@ namespace CarReportSystem {
             {
                 Date = dtpdate.Value,
                 Author = cbkiroku.Text,
-               // Maker =  ,
+                Maker =  radioButton(),
                 Text = tbrepot.Text,
                 Name = cbcar.Text,
                 ImgPicture = pbImage.Image
@@ -35,6 +41,7 @@ namespace CarReportSystem {
             setComboBoxMakertext(cbkiroku.Text);
             setComboBoxMakerName(cbcar.Text);
             reset();
+            Masc();
         }
         //コンボボックスの設定
         private void setComboBoxMakertext(string maker)
@@ -62,7 +69,7 @@ namespace CarReportSystem {
                 {
                     cars[dgvCarDate.CurrentRow.Index].Date = dtpdate.Value;
                     cars[dgvCarDate.CurrentRow.Index].Author = cbkiroku.Text;
-                  //  cars[dgvCarDate.CurrentRow.Index].Maker = ??.Text;
+                    cars[dgvCarDate.CurrentRow.Index].Maker = radioButton();
                     cars[dgvCarDate.CurrentRow.Index].Text = tbrepot.Text;
                     cars[dgvCarDate.CurrentRow.Index].Name = cbcar.Text;
                     cars[dgvCarDate.CurrentRow.Index].ImgPicture = pbImage.Image;
@@ -78,6 +85,7 @@ namespace CarReportSystem {
 
             cars.RemoveAt(i);
             reset();
+            Masc();
         }
         //開くボタン
         private void bthiraku_Click(object sender, EventArgs e)
@@ -87,22 +95,22 @@ namespace CarReportSystem {
                 //「開く」ボタンが選択された時の処理
                 pbImage.Image = Image.FromFile(openImag.FileName);//こんな感じで選択されたファイルのパスが取得できる
                 pbImage.SizeMode = PictureBoxSizeMode.AutoSize;
+                btsakuzyo.Enabled = true;
             }
         }
         //テキストのリセット
         private void reset()
         {
-           // dtpdate.Value = null;
             cbkiroku.Text = null;
-           // Maker??
+            Maker
             tbrepot.Text = null;
             cbcar.Text = null;
-            pbImage.Image = null;
         }
         //画像削除ボタン
         private void btsakuzyo_Click(object sender, EventArgs e)
         {
             pbImage.Image = null;
+            btsakuzyo.Enabled = false;
         }
         //データグリッドビューの開くボタン
         private void button1_Click(object sender, EventArgs e)
@@ -158,6 +166,56 @@ namespace CarReportSystem {
                 pbImage.Image = selectedCar.ImgPicture;
                 dtpdate.Value = selectedCar.Date;
             }
+        }
+        private void Masc()
+        {
+            if (cars.Count == 0)
+            {
+                //ボタンを押せなくする
+                btsyuusei.Enabled = false;
+                btclr.Enabled = false;
+                btsave.Enabled = false;
+            }
+            else
+            {
+                //ボタンを押せるようにする
+                btsyuusei.Enabled = true;
+                btclr.Enabled = true;
+                btsave.Enabled = true;
+            }
+        }
+        private CarReport.CarMaker radioButton()
+        {
+            string rdname = "";
+            foreach (RadioButton rd in groupBox1.Controls)
+                if(rd.Checked)
+                rdname = rd.Text;
+            switch (rdname)
+            {
+                case "トヨタ":
+                    return CarReport.CarMaker.トヨタ;
+                    break;
+                case "日産":
+                    return CarReport.CarMaker.日産;
+                    break;
+                case "ホンダ":
+                    return CarReport.CarMaker.ホンダ;
+                    break;
+                case "スバル":
+                    return CarReport.CarMaker.スバル;
+                    break;
+                case "外車":
+                    return CarReport.CarMaker.外車;
+                    break;
+                case "その他":
+                    return CarReport.CarMaker.その他;
+                    break;
+                default:
+                    return CarReport.CarMaker.DEFAUL;
+                    break;
+            }
+
+
         }
     }
     
