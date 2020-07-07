@@ -55,6 +55,8 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.openImag = new System.Windows.Forms.OpenFileDialog();
+            this.ofdtext = new System.Windows.Forms.OpenFileDialog();
+            this.sfdtext = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -195,21 +197,23 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(22, 349);
+            this.button1.Location = new System.Drawing.Point(18, 349);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
             this.button1.Text = "開く";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(22, 378);
+            this.button2.Location = new System.Drawing.Point(18, 378);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 13;
             this.button2.Text = "保存";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label7
             // 
@@ -237,6 +241,7 @@
             this.dgvCarDate.RowTemplate.Height = 21;
             this.dgvCarDate.Size = new System.Drawing.Size(652, 150);
             this.dgvCarDate.TabIndex = 15;
+            this.dgvCarDate.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarDate_CellContentClick);
             // 
             // pbImage
             // 
@@ -340,6 +345,10 @@
             // 
             this.openImag.FileName = "openFileDialog1";
             // 
+            // ofdtext
+            // 
+            this.ofdtext.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -409,6 +418,8 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.OpenFileDialog openImag;
+        private System.Windows.Forms.OpenFileDialog ofdtext;
+        private System.Windows.Forms.SaveFileDialog sfdtext;
     }
 }
 

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +26,7 @@ namespace CarReportSystem {
             {
                 Date = dtpdate.Value,
                 Author = cbkiroku.Text,
-                Maker =  ,
+               // Maker =  ,
                 Text = tbrepot.Text,
                 Name = cbcar.Text,
                 ImgPicture = pbImage.Image
@@ -59,7 +62,7 @@ namespace CarReportSystem {
                 {
                     cars[dgvCarDate.CurrentRow.Index].Date = dtpdate.Value;
                     cars[dgvCarDate.CurrentRow.Index].Author = cbkiroku.Text;
-                    cars[dgvCarDate.CurrentRow.Index].Maker = ??.Text;
+                  //  cars[dgvCarDate.CurrentRow.Index].Maker = ??.Text;
                     cars[dgvCarDate.CurrentRow.Index].Text = tbrepot.Text;
                     cars[dgvCarDate.CurrentRow.Index].Name = cbcar.Text;
                     cars[dgvCarDate.CurrentRow.Index].ImgPicture = pbImage.Image;
@@ -86,11 +89,12 @@ namespace CarReportSystem {
                 pbImage.SizeMode = PictureBoxSizeMode.AutoSize;
             }
         }
+        //テキストのリセット
         private void reset()
         {
-            dtpdate.Value = null;
+           // dtpdate.Value = null;
             cbkiroku.Text = null;
-            Maker??
+           // Maker??
             tbrepot.Text = null;
             cbcar.Text = null;
             pbImage.Image = null;
@@ -98,7 +102,62 @@ namespace CarReportSystem {
         //画像削除ボタン
         private void btsakuzyo_Click(object sender, EventArgs e)
         {
+            pbImage.Image = null;
+        }
+        //データグリッドビューの開くボタン
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ofdtext.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(ofdtext.FileName, FileMode.Open))
+                    try
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
 
+
+                        cars = (BindingList<CarReport>)formatter.Deserialize(fs);
+                        dgvCarDate.DataSource = cars;
+                        dgvCarDate_CellContentClick(sender, e);
+                    }
+                    catch (SerializationException f)
+                    {
+                        Console.WriteLine("Failed to deserialize. Reason: " + f.Message);
+                        throw;
+                    }
+            }
+        }
+        //保存ボタン
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (sfdtext.ShowDialog() == DialogResult.OK)
+            {
+
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream(sfdtext.FileName, FileMode.Create))
+                    try
+                    {
+                        formatter.Serialize(fs, cars);
+                    }
+                    catch (SerializationException f)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + f.Message);
+                        throw;
+                    }
+            }
+        }
+        //データグリッドビューを選択時
+        private void dgvCarDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCarDate.CurrentRow != null)
+            {
+                CarReport selectedCar = cars[dgvCarDate.CurrentRow.Index];
+                cbcar.Text = selectedCar.Name;
+                //cdMaker.Text = selectedCar.Maker;
+                cbkiroku.Text = selectedCar.Author;
+                pbImage.Image = selectedCar.ImgPicture;
+                dtpdate.Value = selectedCar.Date;
+            }
         }
     }
     
