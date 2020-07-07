@@ -235,16 +235,22 @@
             // 
             // dgvCarDate
             // 
+            this.dgvCarDate.AllowUserToAddRows = false;
             this.dgvCarDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarDate.Location = new System.Drawing.Point(99, 308);
+            this.dgvCarDate.MultiSelect = false;
             this.dgvCarDate.Name = "dgvCarDate";
+            this.dgvCarDate.ReadOnly = true;
             this.dgvCarDate.RowTemplate.Height = 21;
+            this.dgvCarDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarDate.Size = new System.Drawing.Size(652, 150);
             this.dgvCarDate.TabIndex = 15;
-            this.dgvCarDate.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarDate_CellContentClick);
+            this.dgvCarDate.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarDate_Click);
+            this.dgvCarDate.Click += new System.EventHandler(this.dgvCarDate_Click);
             // 
             // pbImage
             // 
+            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImage.Location = new System.Drawing.Point(503, 69);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(244, 182);
@@ -259,6 +265,7 @@
             this.btexit.TabIndex = 17;
             this.btexit.Text = "終了";
             this.btexit.UseVisualStyleBackColor = true;
+            this.btexit.Click += new System.EventHandler(this.btexit_Click);
             // 
             // rdtoyota
             // 

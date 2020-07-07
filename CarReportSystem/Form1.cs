@@ -24,6 +24,7 @@ namespace CarReportSystem {
             btsyuusei.Enabled = false;
             btclr.Enabled = false;
             btsave.Enabled = false;
+            rdtoyota.Checked = true;
         }
         //追加ボタン
         private void bttuika_Click(object sender, EventArgs e)
@@ -73,7 +74,9 @@ namespace CarReportSystem {
                     cars[dgvCarDate.CurrentRow.Index].Text = tbrepot.Text;
                     cars[dgvCarDate.CurrentRow.Index].Name = cbcar.Text;
                     cars[dgvCarDate.CurrentRow.Index].ImgPicture = pbImage.Image;
-                }
+                btsyuusei.Enabled = false;
+                btclr.Enabled = false;
+            }
             reset();
 
 
@@ -86,6 +89,8 @@ namespace CarReportSystem {
             cars.RemoveAt(i);
             reset();
             Masc();
+            btclr.Enabled = false;
+            btsyuusei.Enabled = false;
         }
         //開くボタン
         private void bthiraku_Click(object sender, EventArgs e)
@@ -102,7 +107,7 @@ namespace CarReportSystem {
         private void reset()
         {
             cbkiroku.Text = null;
-            Maker
+            rdtoyota.Checked = true;
             tbrepot.Text = null;
             cbcar.Text = null;
         }
@@ -125,13 +130,14 @@ namespace CarReportSystem {
 
                         cars = (BindingList<CarReport>)formatter.Deserialize(fs);
                         dgvCarDate.DataSource = cars;
-                        dgvCarDate_CellContentClick(sender, e);
+                        dgvCarDate_Click(sender, e);
                     }
                     catch (SerializationException f)
                     {
                         Console.WriteLine("Failed to deserialize. Reason: " + f.Message);
                         throw;
                     }
+                Masc();
             }
         }
         //保存ボタン
@@ -155,16 +161,18 @@ namespace CarReportSystem {
             }
         }
         //データグリッドビューを選択時
-        private void dgvCarDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCarDate_Click(object sender, EventArgs e)
         {
             if (dgvCarDate.CurrentRow != null)
             {
                 CarReport selectedCar = cars[dgvCarDate.CurrentRow.Index];
                 cbcar.Text = selectedCar.Name;
-                //cdMaker.Text = selectedCar.Maker;
+                rdselect(selectedCar.Maker);
                 cbkiroku.Text = selectedCar.Author;
                 pbImage.Image = selectedCar.ImgPicture;
                 dtpdate.Value = selectedCar.Date;
+                btclr.Enabled = true;
+                btsyuusei.Enabled = true;
             }
         }
         private void Masc()
@@ -172,15 +180,11 @@ namespace CarReportSystem {
             if (cars.Count == 0)
             {
                 //ボタンを押せなくする
-                btsyuusei.Enabled = false;
-                btclr.Enabled = false;
                 btsave.Enabled = false;
             }
             else
             {
                 //ボタンを押せるようにする
-                btsyuusei.Enabled = true;
-                btclr.Enabled = true;
                 btsave.Enabled = true;
             }
         }
@@ -216,6 +220,19 @@ namespace CarReportSystem {
             }
 
 
+        }
+        private void rdselect(CarReport.CarMaker i)
+        {
+            foreach (RadioButton rd in groupBox1.Controls)
+            {
+                if (rd.Text == i.ToString())
+                    rd.Checked = true;
+            }
+        }
+
+        private void btexit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
     
