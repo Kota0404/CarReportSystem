@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace CarReportSystem {
     public partial class Form1 : Form {
         BindingList<CarReport> cars = new BindingList<CarReport>();
-        
+        FileStream fs = null;
 
         public Form1()
         {
@@ -76,6 +76,7 @@ namespace CarReportSystem {
                     cars[dgvCarDate.CurrentRow.Index].ImgPicture = pbImage.Image;
                 btsyuusei.Enabled = false;
                 btclr.Enabled = false;
+                dgvCarDate.Refresh();
             }
             reset();
 
@@ -87,6 +88,7 @@ namespace CarReportSystem {
             int i = dgvCarDate.CurrentRow.Index;
 
             cars.RemoveAt(i);
+            dgvCarDate.Refresh();
             reset();
             Masc();
             btclr.Enabled = false;
@@ -114,52 +116,15 @@ namespace CarReportSystem {
         //画像削除ボタン
         private void btsakuzyo_Click(object sender, EventArgs e)
         {
-            pbImage.Image = null;
-            btsakuzyo.Enabled = false;
-        }
-        //データグリッドビューの開くボタン
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (ofdtext.ShowDialog() == DialogResult.OK)
+            DialogResult result = MessageBox.Show("本当に削除しますか？", "注意", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
             {
-                using (FileStream fs = new FileStream(ofdtext.FileName, FileMode.Open))
-                    try
-                    {
-                        BinaryFormatter formatter = new BinaryFormatter();
-
-
-                        cars = (BindingList<CarReport>)formatter.Deserialize(fs);
-                        dgvCarDate.DataSource = cars;
-                        dgvCarDate_Click(sender, e);
-                    }
-                    catch (SerializationException f)
-                    {
-                        Console.WriteLine("Failed to deserialize. Reason: " + f.Message);
-                        throw;
-                    }
-                Masc();
+                pbImage.Image = null;
+                btsakuzyo.Enabled = false;
             }
         }
-        //保存ボタン
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (sfdtext.ShowDialog() == DialogResult.OK)
-            {
-
-
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream(sfdtext.FileName, FileMode.Create))
-                    try
-                    {
-                        formatter.Serialize(fs, cars);
-                    }
-                    catch (SerializationException f)
-                    {
-                        Console.WriteLine("Failed to serialize. Reason: " + f.Message);
-                        throw;
-                    }
-            }
-        }
+       
+       
         //データグリッドビューを選択時
         private void dgvCarDate_Click(object sender, EventArgs e)
         {
@@ -233,6 +198,147 @@ namespace CarReportSystem {
         private void btexit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        //保存ボタン
+        private void btsave_Click_1(object sender, EventArgs e)
+        {
+            if (sfdtext.ShowDialog() == DialogResult.OK)
+            {
+
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream(sfdtext.FileName, FileMode.Create))
+                    try
+                    {
+                        formatter.Serialize(fs, cars);
+                    }
+                    catch (SerializationException f)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + f.Message);
+                        throw;
+                    }
+            }
+        }
+        //データグリッドビューの開くボタン
+        private void btopen_Click_1(object sender, EventArgs e)
+        {
+            if (ofdtext.ShowDialog() == DialogResult.OK)
+            {
+                using ( fs = new FileStream(ofdtext.FileName, FileMode.Open))
+                    try
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+
+
+                        cars = (BindingList<CarReport>)formatter.Deserialize(fs);
+                        dgvCarDate.DataSource = cars;
+                        dgvCarDate_Click(sender, e);
+                    }
+                    catch (SerializationException f)
+                    {
+                        Console.WriteLine("Failed to deserialize. Reason: " + f.Message);
+                        throw;
+                    }
+                Masc();
+            }
+        }
+        //新規入力
+        private void 新規入力ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cbkiroku.Text = null;
+            rdtoyota.Checked = true;
+            tbrepot.Text = null;
+            cbcar.Text = null;
+            dgvCarDate.CurrentCell = null;
+             fs = null;
+            cars.Clear();
+            Masc();
+            btclr.Enabled = false;
+            btsyuusei.Enabled = false;
+
+        }
+        //名前を付けて保存
+        private void 名前を付けて保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sfdtext.ShowDialog() == DialogResult.OK)
+            {
+
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                using ( fs = new FileStream(sfdtext.FileName, FileMode.Create))
+                    try
+                    {
+                        formatter.Serialize(fs, cars);
+                    }
+                    catch (SerializationException f)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + f.Message);
+                        throw;
+                    }
+            }
+        }
+        //上書き保存
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (fs == null)
+            {
+                if (sfdtext.ShowDialog() == DialogResult.OK)
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    using (fs = new FileStream(sfdtext.FileName, FileMode.Create))
+                        try
+                        {
+                            formatter.Serialize(fs, cars);
+                        }
+                        catch (SerializationException f)
+                        {
+                            Console.WriteLine("Failed to serialize. Reason: " + f.Message);
+                            throw;
+                        }
+                }
+            }
+            else
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                try
+                {
+                    formatter.Serialize(fs, cars);
+                }
+                catch (SerializationException f)
+                {
+                    Console.WriteLine("Failed to serialize. Reason: " + f.Message);
+                    throw;
+                }
+            }    
+        }
+        //終了
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        //開く
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ofdtext.ShowDialog() == DialogResult.OK)
+            {
+                using ( fs = new FileStream(ofdtext.FileName, FileMode.Open))
+                    try
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+
+
+                        cars = (BindingList<CarReport>)formatter.Deserialize(fs);
+                        dgvCarDate.DataSource = cars;
+                        dgvCarDate_Click(sender, e);
+                    }
+                    catch (SerializationException f)
+                    {
+                        Console.WriteLine("Failed to deserialize. Reason: " + f.Message);
+                        throw;
+                    }
+                Masc();
+            }
         }
     }
     

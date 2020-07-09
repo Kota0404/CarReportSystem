@@ -57,16 +57,27 @@
             this.openImag = new System.Windows.Forms.OpenFileDialog();
             this.ofdtext = new System.Windows.Forms.OpenFileDialog();
             this.sfdtext = new System.Windows.Forms.SaveFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新規入力ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.名前を付けて保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(19, 9);
+            this.label1.Location = new System.Drawing.Point(52, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 0;
@@ -76,7 +87,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(3, 40);
+            this.label2.Location = new System.Drawing.Point(38, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 16);
             this.label2.TabIndex = 1;
@@ -86,7 +97,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(3, 111);
+            this.label3.Location = new System.Drawing.Point(36, 199);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 2;
@@ -96,7 +107,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(12, 79);
+            this.label4.Location = new System.Drawing.Point(52, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 16);
             this.label4.TabIndex = 3;
@@ -106,7 +117,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(3, 141);
+            this.label5.Location = new System.Drawing.Point(38, 232);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 16);
             this.label5.TabIndex = 3;
@@ -115,7 +126,7 @@
             // cbkiroku
             // 
             this.cbkiroku.FormattingEnabled = true;
-            this.cbkiroku.Location = new System.Drawing.Point(73, 40);
+            this.cbkiroku.Location = new System.Drawing.Point(108, 120);
             this.cbkiroku.Name = "cbkiroku";
             this.cbkiroku.Size = new System.Drawing.Size(121, 20);
             this.cbkiroku.TabIndex = 4;
@@ -123,21 +134,21 @@
             // cbcar
             // 
             this.cbcar.FormattingEnabled = true;
-            this.cbcar.Location = new System.Drawing.Point(73, 75);
+            this.cbcar.Location = new System.Drawing.Point(109, 157);
             this.cbcar.Name = "cbcar";
             this.cbcar.Size = new System.Drawing.Size(121, 20);
             this.cbcar.TabIndex = 5;
             // 
             // dtpdate
             // 
-            this.dtpdate.Location = new System.Drawing.Point(73, 8);
+            this.dtpdate.Location = new System.Drawing.Point(109, 79);
             this.dtpdate.Name = "dtpdate";
             this.dtpdate.Size = new System.Drawing.Size(200, 19);
             this.dtpdate.TabIndex = 6;
             // 
             // bthiraku
             // 
-            this.bthiraku.Location = new System.Drawing.Point(575, 40);
+            this.bthiraku.Location = new System.Drawing.Point(605, 100);
             this.bthiraku.Name = "bthiraku";
             this.bthiraku.Size = new System.Drawing.Size(75, 23);
             this.bthiraku.TabIndex = 7;
@@ -147,7 +158,7 @@
             // 
             // btsakuzyo
             // 
-            this.btsakuzyo.Location = new System.Drawing.Point(672, 40);
+            this.btsakuzyo.Location = new System.Drawing.Point(686, 100);
             this.btsakuzyo.Name = "btsakuzyo";
             this.btsakuzyo.Size = new System.Drawing.Size(75, 23);
             this.btsakuzyo.TabIndex = 8;
@@ -159,7 +170,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(500, 41);
+            this.label6.Location = new System.Drawing.Point(551, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 16);
             this.label6.TabIndex = 0;
@@ -167,7 +178,7 @@
             // 
             // bttuika
             // 
-            this.bttuika.Location = new System.Drawing.Point(503, 257);
+            this.bttuika.Location = new System.Drawing.Point(524, 319);
             this.bttuika.Name = "bttuika";
             this.bttuika.Size = new System.Drawing.Size(75, 23);
             this.bttuika.TabIndex = 9;
@@ -177,7 +188,7 @@
             // 
             // btsyuusei
             // 
-            this.btsyuusei.Location = new System.Drawing.Point(586, 257);
+            this.btsyuusei.Location = new System.Drawing.Point(605, 320);
             this.btsyuusei.Name = "btsyuusei";
             this.btsyuusei.Size = new System.Drawing.Size(75, 23);
             this.btsyuusei.TabIndex = 10;
@@ -187,7 +198,7 @@
             // 
             // btclr
             // 
-            this.btclr.Location = new System.Drawing.Point(667, 257);
+            this.btclr.Location = new System.Drawing.Point(686, 320);
             this.btclr.Name = "btclr";
             this.btclr.Size = new System.Drawing.Size(75, 23);
             this.btclr.TabIndex = 11;
@@ -197,29 +208,29 @@
             // 
             // btopen
             // 
-            this.btopen.Location = new System.Drawing.Point(18, 349);
+            this.btopen.Location = new System.Drawing.Point(28, 446);
             this.btopen.Name = "btopen";
             this.btopen.Size = new System.Drawing.Size(75, 23);
             this.btopen.TabIndex = 12;
             this.btopen.Text = "開く";
             this.btopen.UseVisualStyleBackColor = true;
-            this.btopen.Click += new System.EventHandler(this.button1_Click);
+            this.btopen.Click += new System.EventHandler(this.btopen_Click_1);
             // 
             // btsave
             // 
-            this.btsave.Location = new System.Drawing.Point(18, 378);
+            this.btsave.Location = new System.Drawing.Point(28, 475);
             this.btsave.Name = "btsave";
             this.btsave.Size = new System.Drawing.Size(75, 23);
             this.btsave.TabIndex = 13;
             this.btsave.Text = "保存";
             this.btsave.UseVisualStyleBackColor = true;
-            this.btsave.Click += new System.EventHandler(this.button2_Click);
+            this.btsave.Click += new System.EventHandler(this.btsave_Click_1);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(12, 320);
+            this.label7.Location = new System.Drawing.Point(25, 409);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 16);
             this.label7.TabIndex = 3;
@@ -227,7 +238,7 @@
             // 
             // tbrepot
             // 
-            this.tbrepot.Location = new System.Drawing.Point(99, 160);
+            this.tbrepot.Location = new System.Drawing.Point(109, 232);
             this.tbrepot.Multiline = true;
             this.tbrepot.Name = "tbrepot";
             this.tbrepot.Size = new System.Drawing.Size(398, 129);
@@ -237,7 +248,7 @@
             // 
             this.dgvCarDate.AllowUserToAddRows = false;
             this.dgvCarDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarDate.Location = new System.Drawing.Point(99, 308);
+            this.dgvCarDate.Location = new System.Drawing.Point(109, 367);
             this.dgvCarDate.MultiSelect = false;
             this.dgvCarDate.Name = "dgvCarDate";
             this.dgvCarDate.ReadOnly = true;
@@ -251,7 +262,7 @@
             // pbImage
             // 
             this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImage.Location = new System.Drawing.Point(503, 69);
+            this.pbImage.Location = new System.Drawing.Point(524, 129);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(244, 182);
             this.pbImage.TabIndex = 16;
@@ -259,7 +270,7 @@
             // 
             // btexit
             // 
-            this.btexit.Location = new System.Drawing.Point(687, 478);
+            this.btexit.Location = new System.Drawing.Point(686, 523);
             this.btexit.Name = "btexit";
             this.btexit.Size = new System.Drawing.Size(75, 23);
             this.btexit.TabIndex = 17;
@@ -335,7 +346,7 @@
             this.groupBox1.Controls.Add(this.rdgaisya);
             this.groupBox1.Controls.Add(this.rdhonnda);
             this.groupBox1.Controls.Add(this.rdsubaru);
-            this.groupBox1.Location = new System.Drawing.Point(73, 111);
+            this.groupBox1.Location = new System.Drawing.Point(106, 183);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(401, 43);
             this.groupBox1.TabIndex = 24;
@@ -350,11 +361,85 @@
             // 
             this.ofdtext.FileName = "openFileDialog1";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 25;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルToolStripMenuItem
+            // 
+            this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新規入力ToolStripMenuItem,
+            this.開くToolStripMenuItem,
+            this.保存ToolStripMenuItem,
+            this.名前を付けて保存ToolStripMenuItem,
+            this.終了ToolStripMenuItem});
+            this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ファイルToolStripMenuItem.Text = "ファイル";
+            // 
+            // 新規入力ToolStripMenuItem
+            // 
+            this.新規入力ToolStripMenuItem.Name = "新規入力ToolStripMenuItem";
+            this.新規入力ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新規入力ToolStripMenuItem.Text = "新規入力";
+            this.新規入力ToolStripMenuItem.Click += new System.EventHandler(this.新規入力ToolStripMenuItem_Click);
+            // 
+            // 開くToolStripMenuItem
+            // 
+            this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くToolStripMenuItem.Text = "開く";
+            this.開くToolStripMenuItem.Click += new System.EventHandler(this.開くToolStripMenuItem_Click);
+            // 
+            // 保存ToolStripMenuItem
+            // 
+            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存ToolStripMenuItem.Text = "保存";
+            this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
+            // 
+            // 名前を付けて保存ToolStripMenuItem
+            // 
+            this.名前を付けて保存ToolStripMenuItem.Name = "名前を付けて保存ToolStripMenuItem";
+            this.名前を付けて保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.名前を付けて保存ToolStripMenuItem.Text = "名前を付けて保存";
+            this.名前を付けて保存ToolStripMenuItem.Click += new System.EventHandler(this.名前を付けて保存ToolStripMenuItem_Click);
+            // 
+            // 終了ToolStripMenuItem
+            // 
+            this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了ToolStripMenuItem.Text = "終了";
+            this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 585);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 26;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 513);
+            this.ClientSize = new System.Drawing.Size(800, 607);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btexit);
             this.Controls.Add(this.pbImage);
@@ -377,12 +462,18 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,6 +512,15 @@
         private System.Windows.Forms.OpenFileDialog openImag;
         private System.Windows.Forms.OpenFileDialog ofdtext;
         private System.Windows.Forms.SaveFileDialog sfdtext;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新規入力ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 名前を付けて保存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 開くToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 
